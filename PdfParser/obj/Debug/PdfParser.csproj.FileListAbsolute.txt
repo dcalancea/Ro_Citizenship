@@ -1,0 +1,5 @@
+C:\Work\Projects\POC\Ro_Citizenship\PdfParser\bin\Debug\PdfParser.dll
+C:\Work\Projects\POC\Ro_Citizenship\PdfParser\bin\Debug\PdfParser.pdb
+C:\Work\Projects\POC\Ro_Citizenship\PdfParser\obj\Debug\PdfParser.dll
+C:\Work\Projects\POC\Ro_Citizenship\PdfParser\obj\Debug\PdfParser.pdb
+C:\Work\Projects\POC\Ro_Citizenship\PdfParser\obj\Debug\PdfParser.csprojResolveAssemblyReference.cache
