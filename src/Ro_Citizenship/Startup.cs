@@ -64,7 +64,12 @@ namespace Ro_Citizenship
 
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseMvc();
+            app.UseMvc(
+                routes =>
+                {
+                    routes.MapRoute("Default", "{controller=Values}/{action=Get}");
+                }
+                );
         }
     }
 }
