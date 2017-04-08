@@ -1,6 +1,4 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿src/Ro_Citizenship/bin/*
+src/Ro_Citizenship/obj/*
 /src/WebApplication1/bin/*
 /src/WebApplication1/obj/*

@@ -37,30 +37,30 @@ namespace Ro_Citizenship.Controllers
             //var orderTask = _checker.DownloadOrderFiles();
             //Task.WaitAll(new Task[] { dossierTask, orderTask });
 
-            //var users = _checker.GetRemoteUsers();
-            var users = new List<User>
-            {
-                new User
-                {
-                    DossierNr = "123",
-                    FirstName = "Bob",
-                    LastName = "Marley",
-                    OrderNr = "32323ff",
-                    RegisterDate = DateTime.Now,
-                    ResolutionDate = DateTime.Now,
-                    Term = DateTime.Now
-                },
-                new User
-                {
-                    DossierNr = "1234",
-                    FirstName = "Bob",
-                    LastName = "Marley",
-                    OrderNr = "32323ff",
-                    RegisterDate = DateTime.Now,
-                    ResolutionDate = DateTime.Now,
-                    Term = DateTime.Now
-                }
-            };
+            var users = _checker.GetRemoteUsers();
+            //var users = new List<User>
+            //{
+            //    new User
+            //    {
+            //        DossierNr = "123",
+            //        FirstName = "Bob",
+            //        LastName = "Marley",
+            //        OrderNr = "32323ff",
+            //        RegisterDate = DateTime.Now,
+            //        ResolutionDate = DateTime.Now,
+            //        Term = DateTime.Now
+            //    },
+            //    new User
+            //    {
+            //        DossierNr = "1234",
+            //        FirstName = "Bob",
+            //        LastName = "Marley",
+            //        OrderNr = "32323ff",
+            //        RegisterDate = DateTime.Now,
+            //        ResolutionDate = DateTime.Now,
+            //        Term = DateTime.Now
+            //    }
+            //};
             _userRepository.Upsert(users.ToList());
             return "value";
         }

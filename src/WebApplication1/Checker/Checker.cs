@@ -60,9 +60,9 @@ namespace WebApplication1.Checker
                                   FirstName = ou.FirstName,
                                   LastName = ou.LastName,
                                   OrderNr = ou.OrderNr,
-                                  RegisterDate = du.RegisterDate,
-                                  ResolutionDate = du.ResolutionDate,
-                                  Term = du.Term
+                                  RegisterDate = du.RegisterDate == DateTime.MinValue ? null : du.RegisterDate,
+                                  ResolutionDate = du.ResolutionDate == DateTime.MinValue ? null : du.ResolutionDate,
+                                  Term = du.Term == DateTime.MinValue ? null : du.ResolutionDate
                               };
 
             return joinedUsers.ToList();
@@ -73,8 +73,10 @@ namespace WebApplication1.Checker
             var lines = GetPdfLines(filePath);
             var order = new Order();
             order.Id = lines.FirstOrDefault(l => l.StartsWith("O R D I N") || l.StartsWith("ORDIN"))
-                .Split(new string[] { "Nr.", "NR." }, StringSplitOptions.None)
+                .Split(new string[] { "Nr.", "NR.", "nr.", "N.", "n." }, StringSplitOptions.None)
                 .Last()
+                .ToLowerInvariant()
+                .Replace(" ","")
                 .Trim();
 
             var userLines = lines.Where(l => Regex.Match(l, "^\\d+\\.\\D").Success);
@@ -141,7 +143,7 @@ namespace WebApplication1.Checker
 
                 var splitResolution = solutionString.Split('/');
                 DateTime.TryParseExact(splitResolution.Last(), "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out resolutionDate);
-                orderNumber = String.Join("/", splitResolution.Take(splitResolution.Length - 1));
+                orderNumber = String.Join("/", splitResolution.Take(splitResolution.Length - 1)).ToLowerInvariant();
 
                 return new User()
                 {

@@ -16,16 +16,18 @@ namespace WebApplication1.Models
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.DossierNr)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Users");
 
-                entity.Property(e => e.DossierNr).HasColumnType("varchar(10)");
+                entity.Property(e => e.Id).HasColumnType("int");
 
-                entity.Property(e => e.FirstName).HasColumnType("varchar(30)");
+                entity.Property(e => e.DossierNr).HasColumnType("varchar(20)");
 
-                entity.Property(e => e.LastName).HasColumnType("varchar(30)");
+                entity.Property(e => e.FirstName).HasColumnType("varchar(50)");
 
-                entity.Property(e => e.OrderNr).HasColumnType("varchar(10)");
+                entity.Property(e => e.LastName).HasColumnType("varchar(50)");
+
+                entity.Property(e => e.OrderNr).HasColumnType("varchar(50)");
 
                 entity.Property(e => e.RegisterDate).HasColumnType("datetime");
 
