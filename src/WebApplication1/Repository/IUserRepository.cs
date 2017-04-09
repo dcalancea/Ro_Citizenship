@@ -6,6 +6,7 @@ namespace WebApplication1.Repository
 {
     public interface IUserRepository : IRepository<User, string>
     {
+        User Get(string dossierNumber);
         void Upsert(User user);
         void Upsert(List<User> users);
     }

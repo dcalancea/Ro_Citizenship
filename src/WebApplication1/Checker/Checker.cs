@@ -53,13 +53,15 @@ namespace WebApplication1.Checker
                 .Select(fileName => GetDossierFileUsers(fileName)).ToList();
 
             var joinedUsers = from du in dossiers.SelectMany(x => x)
-                              join ou in orders.SelectMany(o => o.Users).DefaultIfEmpty() on du.DossierNr equals ou.DossierNr
+                              join ou in orders.SelectMany(o => o.Users) 
+                              on du.DossierNr equals ou.DossierNr into joined
+                              from j in joined.DefaultIfEmpty()
                               select new User
                               {
                                   DossierNr = du.DossierNr,
-                                  FirstName = ou.FirstName,
-                                  LastName = ou.LastName,
-                                  OrderNr = ou.OrderNr,
+                                  FirstName = j?.FirstName,
+                                  LastName = j?.LastName,
+                                  OrderNr = j?.OrderNr,
                                   RegisterDate = du.RegisterDate == DateTime.MinValue ? null : du.RegisterDate,
                                   ResolutionDate = du.ResolutionDate == DateTime.MinValue ? null : du.ResolutionDate,
                                   Term = du.Term == DateTime.MinValue ? null : du.ResolutionDate

@@ -19,9 +19,9 @@ namespace WebApplication1.Repository
             throw new NotImplementedException();
         }
 
-        public User Get(string id)
+        public User Get(string dossierNumber)
         {
-            throw new NotImplementedException();
+            return context.Users.FirstOrDefault(u => u.DossierNr == dossierNumber);
         }
 
         public void Save(User entity)
@@ -52,10 +52,6 @@ namespace WebApplication1.Repository
             //{
             //    context.Users.Update(existingUser);
             //}
-            var longestName = users.OrderByDescending(u => u.FirstName.Length).First();
-            var longestSurName = users.OrderByDescending(u => u.LastName.Length).First();
-            var longestDossierNr = users.OrderByDescending(u => u.DossierNr.Length).First();
-            var longestOrderNr = users.OrderByDescending(u => u.OrderNr.Length).First();
             context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Users]");
             context.Users.AddRange(users);
             context.SaveChanges();

@@ -2,3 +2,6 @@
 src/Ro_Citizenship/obj/*
 /src/WebApplication1/bin/*
 /src/WebApplication1/obj/*
+/src/WebApplication1/node_modules/*
+/src/WebApplication1/wwwroot/libs/*
+/src/WebApplication1 - Copy/*

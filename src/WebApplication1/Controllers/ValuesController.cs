@@ -10,7 +10,7 @@ using WebApplication1.Models;
 
 namespace Ro_Citizenship.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     public class ValuesController : Controller
     {
         IChecker _checker;
@@ -22,47 +22,26 @@ namespace Ro_Citizenship.Controllers
         }
 
         // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public User Get(string id)
         {
             //_checker.CheckName("asd", "asd");
             //var dossierTask = _checker.DownloadDossierFiles();
             //var orderTask = _checker.DownloadOrderFiles();
             //Task.WaitAll(new Task[] { dossierTask, orderTask });
 
-            var users = _checker.GetRemoteUsers();
-            //var users = new List<User>
-            //{
-            //    new User
-            //    {
-            //        DossierNr = "123",
-            //        FirstName = "Bob",
-            //        LastName = "Marley",
-            //        OrderNr = "32323ff",
-            //        RegisterDate = DateTime.Now,
-            //        ResolutionDate = DateTime.Now,
-            //        Term = DateTime.Now
-            //    },
-            //    new User
-            //    {
-            //        DossierNr = "1234",
-            //        FirstName = "Bob",
-            //        LastName = "Marley",
-            //        OrderNr = "32323ff",
-            //        RegisterDate = DateTime.Now,
-            //        ResolutionDate = DateTime.Now,
-            //        Term = DateTime.Now
-            //    }
-            //};
-            _userRepository.Upsert(users.ToList());
-            return "value";
+            //var users = _checker.GetRemoteUsers();
+            //_userRepository.Upsert(users.ToList());
+
+            var user = _userRepository.Get(id);
+            return user;
         }
 
         // POST api/values

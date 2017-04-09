@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebApplication1.Repository;
 using WebApplication1.Checker;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Routing;
+using System.IO;
 
 namespace WebApplication1
 {
@@ -35,10 +38,23 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            //JsonConvert.DefaultSettings = (() =>
+            //{
+            //    var settings = new JsonSerializerSettings();
+            //    // do something with settings
+            //    return settings;
+            //});
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            //services.AddJsonOptions(options =>
+            //{
+            //    var settings = options.SerializerSettings;
+            //    // do something with settings
+            //});
 
             services.AddOptions();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -59,12 +75,36 @@ namespace WebApplication1
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            app.Use(async (context, next) =>
+            {
+                await next();
 
+                if (context.Response.StatusCode == 404
+                    && !Path.HasExtension(context.Request.Path.Value))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+            app.UseStaticFiles();
             app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+
+                routes.MapRoute(
+                    name: "api_route",
+                    template: "api/{controller}/{action}/{id?}",
+                    defaults: new { controller = "Values", action = "Get" });
+
+                //routes.MapRoute(
+                //    name: "default_route",
+                //    template: "",
+                //    defaults: "index.html"
+                //    );
+            });
         }
     }
 }
