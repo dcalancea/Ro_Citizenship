@@ -14,9 +14,17 @@ export class UserComponent implements OnInit {
     constructor(private userService: UserService) { }
 
     user: User;
+    dossierNr: string;
 
     ngOnInit() {
         this.userService.getUser('1246/2011')
+            .subscribe((user: User) => {
+                this.user = user;
+            });
+    }
+
+    findClick() {
+        this.userService.getUser(this.dossierNr)
             .subscribe((user: User) => {
                 this.user = user;
             });

@@ -21,6 +21,13 @@ var UserComponent = (function () {
             _this.user = user;
         });
     };
+    UserComponent.prototype.findClick = function () {
+        var _this = this;
+        this.userService.getUser(this.dossierNr)
+            .subscribe(function (user) {
+            _this.user = user;
+        });
+    };
     UserComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
