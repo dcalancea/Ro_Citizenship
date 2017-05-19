@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using WebApplication1.Repository;
 using WebApplication1.Checker;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Routing;
 using System.IO;
+using WebApplication1.Repository;
 
 namespace WebApplication1
 {
@@ -61,8 +61,8 @@ namespace WebApplication1
             services.AddSingleton<IChecker, Checker.Checker>();
             services.AddSingleton<IUserRepository, UserRepository>();
 
-            services.AddEntityFramework()
-                //      .AddEntityFrameworkSqlServer()
+            services//.AddEntityFramework()
+                    .AddEntityFrameworkSqlServer()
                 .AddDbContext<DbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<PlayGroundContext>(options =>

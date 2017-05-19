@@ -8,3 +8,9 @@ src/Ro_Citizenship/obj/*
 /src/WebApplication1 - Copy/*
 /.vs/*
 /src/Ro_Citizenship/bin/Debug/net461
+/DataLayer/bin/Debug
+/DataLayer/obj/Debug
+/EmptyConsoleApp
+/Models/obj/Debug
+/src/WebApplication1/project.fragment.lock.json
+/packages
