@@ -9,3 +9,6 @@
     ResolutionDate: {{ user.resolutionDate}} <br />
     Term: {{ user.term}} <br />
 </div>
+
+<input type="text" [(ngModel)]="dossierNr" />
+<button (click)="findClick()">Search</button>

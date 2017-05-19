@@ -13,13 +13,14 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var user_component_1 = require('./userComponent/user.component');
 var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
 var user_service_1 = require('./services/user.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
             declarations: [app_component_1.AppComponent, user_component_1.UserComponent],
             providers: [user_service_1.UserService],
             bootstrap: [app_component_1.AppComponent]
