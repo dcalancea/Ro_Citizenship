@@ -17,7 +17,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DataLayer\DataLayer.csproj" />
-    <ProjectReference Include="..\..\Models\Models.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

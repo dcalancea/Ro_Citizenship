@@ -34,9 +34,6 @@
       "dependencies": {
         "DataLayer": {
           "target": "project"
-        },
-        "Models": {
-          "target": "project"
         }
       }
     }

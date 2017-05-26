@@ -14,3 +14,4 @@ src/Ro_Citizenship/obj/*
 /Models/obj/Debug
 /src/WebApplication1/project.fragment.lock.json
 /packages
+/src/WebApplication1/wwwroot/app

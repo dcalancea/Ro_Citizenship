@@ -2307,12 +2307,6 @@
         }
       },
       "DataLayer/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "Models": "1.0.0"
-        }
-      },
-      "Models/1.0.0": {
         "type": "project"
       }
     }
@@ -7113,10 +7107,6 @@
     "DataLayer/1.0.0": {
       "type": "project",
       "msbuildProject": "../../DataLayer/DataLayer.csproj"
-    },
-    "Models/1.0.0": {
-      "type": "project",
-      "msbuildProject": "../../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7145,8 +7135,7 @@
       "iTextSharp >= 5.5.11"
     ],
     ".NETFramework,Version=v4.6.1": [
-      "DataLayer",
-      "Models"
+      "DataLayer"
     ]
   },
   "tools": {
